@@ -7,3 +7,4 @@
 \contentsline {section}{\numberline {1.4}Acknowledgements}{3}
 \contentsline {chapter}{\chapternumberline {2}Lectures}{5}
 \contentsline {section}{\numberline {2.1}14 January 2019}{5}
+\contentsline {section}{\numberline {2.2}16 January 2019}{7}
