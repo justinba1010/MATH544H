@@ -1,0 +1,212 @@
+\documentclass[12pt]{article}   % The [12pt] is optional for senior eyes; the default is 10 pt
+
+\setlength{\parindent}{0pt}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\usepackage{amsmath}  % It's generally a good idea to include this if you're going to use any "unusual" symbols. 
+\usepackage{amssymb}  % More out of the way math symbols such as \nmid for does not divide
+\usepackage{amsfonts}  % I am using this to get the "Blackboard Bold" symbols. 
+
+\usepackage{enumerate}  % The standard enumerate environment numbers the items consecutively. This package enables me to use letters instead. It's optional.
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+
+\usepackage{mdwlist}
+\usepackage[margin=1.2in]{geometry}
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\from}{\!\!:} % squeeze the colon closer to the name of the domain of a function
+\newcommand{\iso}{\cong} % isomorphism
+\newcommand{\rmth}{^{\text{th} } } % roman th as superscript
+\newcommand{\inv}{^{-1}} % inverse (exponent -1)
+\newcommand{\units}{^{\times}} % groups of units as in E^x
+
+% operator names (set in Roman to contrast with math letters 
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sym}{\operatorname{Symm}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+% lower case boldface letters
+\newcommand{\uu}{\mathbf u}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\ww}{\mathbf w}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+
+
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\th}{^{\text{th} } } % roman th as superscript
+\newcommand{\st}{^{\text{st} } } % roman st as superscript
+\newcommand{\nd}{^{\text{nd} } } % roman nd as superscript
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+
+\title{MATH544 \\ Dr. Miller \\ HW 4}
+\author{Justin Baum}
+
+\begin{document}
+
+\maketitle
+\begin{problem}[2.1.8]
+Verify that $\begin{bmatrix}1 \\ 1 \\ 0 \\ -1 \end{bmatrix}$ is an eigenvector of $\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+1 & 2 & 2 & 2 \\
+1 & 2 & 3 & 3 \\
+1 & 2 & 3 & 4
+\end{bmatrix}$.
+\end{problem}
+\begin{proof}
+\begin{bmatrix}
+\end{bmatrix}
+\[\begin{bmatrix}
+1 \\ 1 \\ 0 \\ -1 \end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+1 & 2 & 2 & 2 \\
+1 & 2 & 3 & 3 \\
+1 & 2 & 3 & 4
+\end{bmatrix}=\lambda \begin{bmatrix}
+1 \\ 1 \\ 0 \\ -1\end{bmatrix}\]
+We're only looking for the row with the equation for lambda. I'm stuck here, but I thought we can use the rat poison principle because the problem is narrow enough. We can first verify if $\begin{bmatrix}
+1 \\ 1 \\ 0 \\ -1\end{bmatrix}$ is an eigenvector, and if so we can see what scalar multiple of the eigenvector it is.
+\[\begin{bmatrix}
+1 \\ 1 \\ 0 \\ -1 \end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+1 & 2 & 2 & 2 \\
+1 & 2 & 3 & 3 \\
+1 & 2 & 3 & 4
+\end{bmatrix}=\begin{bmatrix}
+1 + 1 + 0 - 1 \\
+1 + 2 + 0 - 2 \\
+0 + 0 + 0 + 0 \\
+1 + 2 + 0 -4 \\
+\end{bmatrix}=\begin{bmatrix}
+1 \\ 1 \\ 0 \\ -1
+\end{bmatrix}\]
+This implies that $\lambda = 1$, which means the eigenvalue is $1$.
+\end{proof}
+\begin{problem}[2.1.10]
+Find all eigenvalues and eigenvectors of each other following matrices over $\C$.\\
+\begin{center}
+$\begin{bmatrix}
+    1 & 2\\ 3 & 4
+\end{bmatrix}$
+\end{center}
+\end{problem}
+\begin{proof}
+    \item To find the eigenvectors and eigenvalues $\begin{bmatrix}
+    1 & 2\\ 3 & 4
+    \end{bmatrix}\begin{bmatrix}
+    a+bi\\
+    c+di
+    \end{bmatrix}=\lambda\begin{bmatrix}
+    a+bi\\c+di
+    \end{bmatrix}$.\\
+    First we can break this back into equation form.
+    \[\left \{ \begin{array}{c}
+    a + bi + 2c + 2di = \lambda a + \lambda bi \\
+    3a + 3bi + 4c + 4di = \lambda c + \lambda di \end{array} \right \}\]
+    Then if we try to manipulate this into RREF form, with $a+bi$ and $c+di$ as variables we get.
+    \[\begin{bmatrix}
+    1 - \lambda & 2 \\ 3 & 4-\lambda
+    \end{bmatrix}\begin{bmatrix}
+    a + bi\\c+di
+    \end{bmatrix}=\begin{bmatrix}
+    0 \\ 0
+    \end{bmatrix}\]
+    \[\begin{amatrix}{2}
+    1 - \lambda & 2 & 0\\ 3 & 4-\lambda & 0
+    \end{amatrix}\xrightarrow{-(2-\frac{\lambda}{2})R_1+R_2}\begin{amatrix}{2}
+    1-\lambda & 2 & 0\\ \frac{5\lambda}{2}-\frac{\lambda^2}{2}+1 & 0 & 0
+    \end{amatrix}\xrightarrow{2R_2}\]
+    \[5\lambda + \lambda^2 + 2 = 0\]
+    Using the quadratic formula we get $\lambda = \frac{5\pm\sqrt{33}}{2}$.\\
+    Now to find the eigenvectors, we know that $\lambda = \frac{5\pm\sqrt{33}}{2}$.
+    \[\left \{ \begin{array}{c}
+    a + bi + 2c + 2di = \lambda a + \lambda bi \\
+    3a + 3bi + 4c + 4di = \lambda c + \lambda di \end{array} \right \}\]
+    When we break this into equations, and put this into Gaussian form.
+     \[\left \{ \begin{array}{c|c}
+    a  + 2c  = \lambda a  & 3a  + 4c = \lambda c\\
+    bi + 2di = \lambda bi  & 
+    3bi + 4di = \lambda di
+    \end{array} \right\}\]
+    For each solution.
+    \[\begin{amatrix}{4}
+    1 - \frac{5+\sqrt{33}}{2} & 2 & 0 & 0 & 0\\
+    3 &4-\frac{5+\sqrt{33}}{2} & 0 & 0 & 0\\0 & 0 & 1-\frac{5+\sqrt{33}}{2}& 2 & 0\\ 0 & 0 & 3 & 4-\frac{5+\sqrt{33}}{2} & 0\\
+    \end{amatrix}\]
+    Plugging this into the calculator gives us $a=0.457c$ and $b=0.457d$. For all vectors, of the form $\begin{bmatrix}
+    0.457x +0.457yi\\x +yi
+    \end{bmatrix}$ for all $x,y\in\R$, when linearly transformed become $\lambda\begin{bmatrix}
+    0.457x +0.457yi\\x +yi
+    \end{bmatrix}$, here $\lambda = \frac{5-\sqrt{33}}{2}$.
+    \[\begin{amatrix}{4}
+    1 - \frac{5-\sqrt{33}}{2} & 2 & 0 & 0 & 0\\
+    3 &4-\frac{5-\sqrt{33}}{2} & 0 & 0 & 0\\0 & 0 & 1-\frac{5-\sqrt{33}}{2}& 2 & 0\\ 0 & 0 & 3 & 4-\frac{5-\sqrt{33}}{2} & 0\\
+    \end{amatrix}\]
+    Again for all $x,y\in\R$, $A\begin{bmatrix}
+    -1.457x + -1.457yi\\x+yi
+    \end{bmatrix}=\lambda\begin{bmatrix}
+    -1.457x + -1.457yi\\x+yi
+    \end{bmatrix}$ Here $\lambda = \frac{5-\sqrt{33}}{2}$.\ 
+\end{proof}
+\begin{problem}[2.1.14]
+Suppose that $A \in M_n(\F)$ and that for each $j=1,...,n$, $e_j$ is an eigenvector of $A$. Prove that $A$ is a diagonal matrix.
+\end{problem}
+\begin{proof}\
+Suppose that $A$ was not a diagonal matrix, then, some row will have an element $a_{ij}$, where $j\neq i$ and $a_{ij}\neq0$, and $T(e_{j})=\begin{bmatrix}
+?\\\vdots\\a_{ij}\cdot1\\ \vdots \\ a_{jj}\cdot 1\\ \vdots ?\end{bmatrix} = \begin{bmatrix}
+0 \\ \vdots \\ 0\\ \lambda \\ 0\\ \vdots \\ 0
+\end{bmatrix}$. Thus we have a contradiction.
+\end{proof}
+\begin{problem}[D]
+Let $A, B, C$ be sets, $f: A \to B$, $g: B \to C$ be functions.
+\begin{enumerate}[label=\roman*.]
+    \item If $f$ and $g$ are each injective, prove that $g\circ f : A \to C$ is injective (recall that $(g \circ f)(a) := g(f(a))$.)
+    \item If f and g are each surjective, prove that $g \circ f : A \to C$ is surjective.
+    \item If $g\circ f$ is injective, prove that f must be injective. (If you want to find your keys and your phone in different pockets when you arrive at school, you better not have put them in the same pocket when you left home. Putting your receipt for the sausage, biscuit and cheese that you pick up along the way in the same pocket has no bearing on the matter.)
+    \item If $g \circ f$ is surjective, prove that g must be surjective. (Can you concoct a silly story to help remember this?)
+\end{enumerate}
+\end{problem}
+\begin{proof}\ \\ 
+\begin{enumerate}[label=\roman*.]
+    \item If function $f$ is injective, then for every $x\in A$ there is a unique $y\in B$, that $f(x)=y$. If $g$ is injective, then for every $k\in B$ there is a unique $l\in C$. so if every $x\in A$ has a unique $y\in B$ that it maps to according to $f$, and every $k \in B$ has a unique $l\in C$ that $g$ maps it to, then we know that the image of $f$ is some subset of $B$, and we know that all of $B$ maps to some unique element in $C$ according to $g$. Then the composition $g\circ f$ is also injective.
+    \item If function $f$ is surjective, then for every $x\in B$, there is at least 1 $y\in A$, such that $f(y)=x$. This also means the image of $f$ is $A$ by definition. If function $g$ is surjective, then for every $j\in C$, there exists at least 1 $k \in B$, that maps to $j$ according to $g$. Thus the image of $f$ is equal to the full domain of $g$, and $g$ is a surjective function, such that the composition $g\circ f$ is also surjective.
+    \item Suppose that $f$ was not injective, then there is some element that has two inputs that map to it. Thus even if $g$ was injective, the composition would no longer be injective, as two elements in the domain of $f$ could map to an element in $g$, such that whatever it eventually maps to will have two elements.
+    \item Suppose that $g$ was not surjective, then there would be elements that are not mapped in the codomain of $g$, so even if $f$ was surjective, the composition cannot be as the final codomain would have missing elements that cannot be mapped to.
+\end{enumerate}
+\end{proof}
+\begin{problem}[F]
+Let V, W be vector spaces and $T : V \to W$ be a linear transformation. Prove the
+Conjecture that we made in class, namely that if $ker(T) = \{0\}$, then T is injective.
+\end{problem}
+\begin{proof}
+Suppose $T$ is not injective. Then there would not be a unique element in $img(T)$ for every element in the domain of $T$. Then there exists at least two unique vectors $\vec{u}, \vec{v} \in V$ that map to the same vector in $W$. So $T(\vec{u}) = T(\vec{v}) \in W$. If this is true, then there are at least 2 vectors in $V$ that map to $\vec{0}_W$, because for it to be a linear transformation, $T(\vec{0}_V)=\vec{0}_W$, and again because it is linear and because $T(\vec{u})=T(\vec{w})\neq \vec{0}_V$, then $T(\vec{u}-\vec{v})=T(\vec{u})-T(\vec{v})=\vec{0}_W$.\\
+Note because $\vec{u}$ and $\vec{v}$ are unique, then they cannot both equal $\vec{0}$, thus we have 2 unique, and at least 1 non-zero vectors. Thus whenever the kernel only contains the zero vector, the transformation is injective.
+\end{proof}
+\end{document}

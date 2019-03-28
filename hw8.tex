@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[12 pt]{article}
+\usepackage[margin=1in, top=1.25in, bottom=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage[mathscr]{euscript}
+\pagestyle{fancy}
+\setlength{\headheight}{25pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\fancyhf{}
+\lhead{}  %replace with your name
+\rhead{Math 544 \\ Spring 2019 \\ Homework 8} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+\lfoot{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\vv}[1]{\textbf v_{#1}}
+\newcommand{\vu}[1]{\textbf u_{#1}}
+\newcommand{\ve}[1]{\textbf e_{#1}}
+\newcommand{\poly}[2]{\mathscr{P}_#2(#1)}
+\newcommand{\zero}{\textbf 0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}{3.3.8f}
+Determine the dimension of
+$\left<\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix},\begin{bmatrix}
+i\\-1+i\\-1
+\end{bmatrix}  \right>$ over $\C$.
+\end{problem}
+\begin{sol}
+One of the vectors is linearly dependent, so we can remove it and retain the same span.
+\[\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix}
+=
+i\begin{bmatrix}
+i\\-1+i\\-1
+\end{bmatrix}\implies
+\left<\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix},\begin{bmatrix}
+i\\-1+i\\-1
+\end{bmatrix}  \right >
+=
+\left<\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix}  \right >
+\]
+Thus this has dimension 1.
+\end{sol}
+
+\begin{problem}{3.3.8g}
+Determine the dimension of
+$\left<\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix},\begin{bmatrix}
+i\\-1+i\\-1
+\end{bmatrix}  \right >$ over $\R$.
+\end{problem}
+\begin{sol}
+Let's create an isomorphic transformation(over $\R$) for this. Let \[T:\C^3\to\R^6\ \ \ T\left(\begin{bmatrix}m 
+a+bi\\c+di\\e+fi
+\end{bmatrix}\right)=\begin{bmatrix}
+a\\b\\c\\d\\e\\f
+\end{bmatrix}\]
+Then these two spaces are isomorphic,
+$\left<\begin{bmatrix}
+1\\1+i\\i
+\end{bmatrix},\begin{bmatrix}
+i\\-1+i\\-1
+\end{bmatrix}\right >$ and
+$\left<
+\begin{bmatrix}
+1\\0\\1\\1\\0\\1
+\end{bmatrix},\begin{bmatrix}
+0\\1\\-1\\1\\-1\\0
+\end{bmatrix}
+\right >$. Thus we can put this into matrix form, and it already is in RREF so we know that there are 2 independent vectors, and they are by definition spanning of the space. Thus this is a basis of the space, and thus the dimension is 2.
+\end{sol}
+
+\begin{problem}{3.3.12}
+Suppose that $\dim V = n$ and that $T\in \mathscr{L}(V)$. Prove that $T$ has at most $n$ distinct eigenvalues.
+\end{problem}
+\begin{sol}
+Suppose we had eigenvectors, with \underline{$k > n$ distinct eigenvalues}, $\{\lambda_1,\dots,\lambda_k\}$. This would give us $k$ linearly independent eigenvectors by Theorem 3.8. However, this would mean $\dim V \geq k$ and $\dim V = n$. By contradiction $k \leq \dim V$.
+\end{sol}
+\end{document}

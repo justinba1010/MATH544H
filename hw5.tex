@@ -1,0 +1,259 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[11 pt]{article}
+\usepackage[margin=1in, top=1.25in, bottom=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\pagestyle{fancy}
+\setlength{\headheight}{25pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\fancyhf{}
+\lhead{Justin Baum}  %replace with your name
+\rhead{Math 544 \\ Spring 2019 \\ Homework 5 p 1} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+\lfoot{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Solutions to problems go below.  Please follow the guidelines from https://www.overleaf.com/read/sfbcjxcgsnsk/
+
+
+%Copy the following block of text for each problem in the assignment.
+
+
+
+\begin{problem}{2.3.4} 
+Let $T: \R^2\to\R^2$ be the map defined by first rotating counterclockwise by $\theta$, and then reflecting across the line $y=x$. Find the matrix of $T$.
+\end{problem}
+\begin{sol}
+The rotation and relection can be represented as matrices (example 2.3.2), and we can multiply the matrices in the correct order.
+\[L_T = \begin{bmatrix}0 & 1\\1& 0\end{bmatrix}\begin{bmatrix}\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}=\begin{bmatrix}\sin \theta & \cos \theta \\ \cos \theta & -\sin \theta \end{bmatrix}\]
+\end{sol}
+
+\begin{problem}{2.3.8}
+The norm of a vector $\vec{v}\in\R^n$ is defined (in analogy with $\R^2$ and $\R^3$) as $||\vec{v}|| - \sqrt{v_1^2+v_2^2+\dots+v_n^2}$. Show that if $\vec{v} \in \R^n$ then $||\vec{v}||^2=\vec{v}^T\vec{v}$.
+\end{problem}
+\begin{sol}
+%A vertical vector, can be represented as a n x 1 matrix, and the transpose would result in a 1 x n vector. Then $\vec{v}^T\vec{v}$ is the matrix multiplication of a 1 x n, and n x 1 matrices.
+\[\vec{v}=\begin{bmatrix}
+v_1\\v_2\\\vdots\\v_n
+\end{bmatrix}\text{ and } \vec{v}^T=\begin{bmatrix}
+v_1 & v_2 & \dots & v_n
+\end{bmatrix}\]
+Thus the product $\vec{v}^T\vec{v}=v_1^2+v_2^2+\dots+v_n^2$. By definition, the square of the norm, $||\vec{v}||=v_1^2+v_2^2+\dots+v_n^2$, thus they are equal.
+\end{sol}
+
+\begin{problem}{2.3.10}
+Suppose that $A\in M_n(\F)$ is invertible. Show that $A^T$ is also invertible, and that $(A^T)^{-1}=(A^{-1})^T$.
+\end{problem}
+\begin{sol}
+By using the 6 propositions from class.
+\[A\in M_n(\F),\ A^{-1}\in M_n(\F),\ A^{-1}A=I_n\]
+\[(A^{-1}A)^T=I_n^T\]
+\[A^T(A^{-1})^T=I_n\]
+\[(A^T)^{-1}A^T(A^{-1})^T=(A^T)^{-1}I_n\]
+\[(A^{-1})^T=(A^T)^{-1}\]
+Because $A^{-1}$ exists, we know that $(A^T)^{-1}$ exists because it is computationally $(A^{-1})^T$.
+\end{sol}
+
+
+\begin{problem}{2.5.4d}
+Determine whether each list of vectors span $\F^n$, this case $\F=\R$.
+\[\left ( \begin{bmatrix}
+1\\1\\0
+\end{bmatrix},
+\begin{bmatrix}
+1\\0\\1
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}
+\right )\]
+\end{problem}
+\begin{sol}
+We need to prove that any $\begin{bmatrix}
+x\\y\\z
+\end{bmatrix}=a\begin{bmatrix}
+1\\1\\0
+\end{bmatrix}+
+b\begin{bmatrix}
+1\\0\\1
+\end{bmatrix}+
+c\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}$ has a solution for $a,b,c\in\F$, for all $x,y,z\in\F$. We can turn this into a system of equations.
+\begin{cases}
+x = a+b\\y=a+c\\z=b+c
+\end{cases}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+We can turn this into an augmented matrix, and after using Gaussian elimination, we can turn this into RREF.
+
+\[\begin{amatrix}{3}1 & 1 & 0 & x\\1 & 0 & 1 & y\\ 0 & 1 & 1 & z\end{amatrix}\xrightarrow{R1 := (R2-R3)+R1}\begin{amatrix}{3}2 & 0 & 0 & x+y-z\\1 & 0 & 1 & y\\ 0 & 1 & 1 & z\end{amatrix}\xrightarrow{\frac{1}{2}R1}\begin{amatrix}{3}1 & 0 & 0 & \frac{1}{2}(x+y-z)\\1 & 0 & 1 & y\\ 0 & 1 & 1 & z\end{amatrix}\]
+\[\xrightarrow{R2:=-R1+R2}\begin{amatrix}{3}1 & 0 & 0 & \frac{1}{2}(x+y-z)\\0 & 0 & 1 & y - \frac{1}{2}(x+y-z)\\ 0 & 1 & 1 & z\end{amatrix}\]
+\[\xrightarrow{R3:=-R2+R3}\begin{amatrix}{3}1 & 0 & 0 & \frac{1}{2}(x+y-z)\\0 & 0 & 1 & y - \frac{1}{2}(x+y-z)\\ 0 & 1 & 0 & z - y + \frac{1}{2}(x+y-z)\end{amatrix}\]
+\[\xrightarrow{R2\leftrightarrow R3}\begin{amatrix}{3}1 & 0 & 0 & \frac{1}{2}(x+y-z)\\ 0 & 1 & 0 & z - y + \frac{1}{2}(x+y-z)\\0 & 0 & 1 & y - \frac{1}{2}(x+y-z)\end{amatrix}\]
+So for all $\begin{bmatrix}
+x\\y\\z
+\end{bmatrix}\in \R^3$ we know there exists a linear combination, one that $\begin{bmatrix}
+x\\y\\z
+\end{bmatrix}=a\begin{bmatrix}
+1\\1\\0
+\end{bmatrix}+
+b\begin{bmatrix}
+1\\0\\1
+\end{bmatrix}+
+c\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}$ where $a=\frac{1}{2}(x+y-z)$, $b=z - y + \frac{1}{2}(x+y-z)$ and $c= y - \frac{1}{2}(x+y-z)$.
+\end{sol}
+
+\begin{problem}{2.5.4e}
+Determine whether each list of vectors spans $\F^n$, in this case $\F=\F_2$.
+\[\left ( \begin{bmatrix}
+1\\1\\0
+\end{bmatrix},\begin{bmatrix}
+1\\0\\1
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}\right )\]
+\end{problem}
+\begin{sol}
+$\F_2=\{0,1\}$.
+\[\begin{bmatrix}
+1\\0\\1
+\end{bmatrix}+
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}=
+\begin{bmatrix}
+1\\1\\0
+\end{bmatrix}\]
+So $<\begin{bmatrix}
+1\\1\\0
+\end{bmatrix},\begin{bmatrix}
+1\\0\\1
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}>\ =\ <\begin{bmatrix}
+1\\0\\1
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}>$. This cannot span all of $F_2^3$, as there are only two independent vectors.
+\end{sol}
+
+\begin{problem}{2.5.18}
+Suppose that $T: V\to W$ is linear and that $U$ is a subspace of W, let
+\[X=\{v\in V\ |\ T(v)\in U\}.\]
+Show that X is a subspace of V.
+\end{problem}
+\begin{sol}
+Because T is linear, $\vec{0}_V\in X$, because $\vec{0}\in V$, and $T(\vec{0}_V)=\vec{0}_W$(T is linear).\\
+Let $\vec{x},\vec{y}\in X$, we know that $T(\vec{x}+\vec{y})=T(\vec{x})+T(\vec{y})\in U$, because U is a subspace, so $(\vec{x}+\vec{y})\in X$(T is linear). Thus $X$ is closed under addition.\\
+Let $c\in\F$, and $\vec{x}\in X$ and we know that $T(c\vec{x})\in U$, so $c\vec{x}\in X$, and X is closed under scalar multiplication. And finally because $X\subseteq V$ by definition, X is a subspace of V.
+\end{sol}
+
+\begin{problem}{K}
+We have seen that if $A =
+\begin{bmatrix}
+a & b\\c & d
+\end{bmatrix}$
+with $\Delta = ad - bc = 0$, then $A^{-1}$
+exists and
+there’s a nice formula. What happens if $\Delta = 0$? Could A still be invertible, but
+with a different formula? Let’s take $\vec{v} =
+\begin{bmatrix}
+-b\\a
+\end{bmatrix}$. Compute $A\vec{v}$. If $\vec{v}= \vec{0}$ what can
+you conclude? If $\vec{v} \ne \vec{0}$, pick another vector $\vec{w}$ in a clever way, and compute $A\vec{w}$.
+Analyze the cases $\vec{w} = \vec{0}$ and $\vec{w} \ne \vec{0}$. What is the upshot of all of this?
+\end{problem}
+\begin{sol}
+\[\begin{bmatrix}
+a & b\\c & d
+\end{bmatrix}\begin{bmatrix}
+x\\y
+\end{bmatrix}=\begin{bmatrix}
+ax+by\\
+cx+dy
+\end{bmatrix}\]
+When $a = c = 0$, we know that $ad-bc = 0$, and this can be reduced to $y\begin{bmatrix}
+b\\d
+\end{bmatrix}$, this means that all of $\R^2$ gets mapped to all scalar multiples of $\begin{bmatrix}
+b\\d
+\end{bmatrix}$, which is a line. Because A is not bijective in this case, it is no longer invertible.
+By the same argument, $b=d=0$ is also no longer invertible.\\
+The case that $a=b=0$, means this can be reduced to $\begin{bmatrix}
+0\\cx+dy
+\end{bmatrix}$, which means that is no longer bijective as well, because $v_1\ne 0$ can never be mapped to. By the same argument, except $v_2$ is always 0, $c=d=0$ is no longer bijective.\\
+For the case $ad=bc\ne 0$.
+\[\begin{bmatrix}
+a & b\\c & d
+\end{bmatrix}=\begin{bmatrix}
+a & b\\\frac{ad}{b}&d
+\end{bmatrix}=a\begin{bmatrix}
+1 & \frac{b}{a}\\\frac{d}{b} & \frac{d}{a}
+\end{bmatrix}\]
+Now after the transformation.
+\[a\begin{bmatrix}
+1 & \frac{b}{a}\\\frac{d}{b} & \frac{d}{a}
+\end{bmatrix}\begin{bmatrix}
+x\\y
+\end{bmatrix}=a\begin{bmatrix}
+x+\frac{b}{a}y\\\frac{d}{b}x+\frac{d}{a}y
+\end{bmatrix}=ax\begin{bmatrix}
+1\\\frac{d}{b}
+\end{bmatrix}+y\begin{bmatrix}
+b\\d
+\end{bmatrix}\]
+These are collinear, $b\ne 0$, so
+\[\frac{1}{b}ax\begin{bmatrix}
+b\\d
+\end{bmatrix}+y\begin{bmatrix}
+b\\d
+\end{bmatrix}\]
+Thus $L_A$ is not bijective, and cannot have an inverse.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}

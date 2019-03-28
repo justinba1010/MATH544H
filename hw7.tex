@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[11 pt]{article}
+\usepackage[margin=1in, top=1.25in, bottom=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage[mathscr]{euscript}
+\pagestyle{fancy}
+\setlength{\headheight}{25pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\fancyhf{}
+\lhead{}  %replace with your name
+\rhead{Math 544 \\ Spring 2019 \\ Homework 6} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+\lfoot{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\vv}[1]{\textbf v_{#1}}
+\newcommand{\vu}[1]{\textbf u_{#1}}
+\newcommand{\ve}[1]{\textbf e_{#1}}
+\newcommand{\poly}[2]{\mathscr{P}_#2(#1)}
+\newcommand{\zero}{\textbf 0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Solutions to problems go below.  Please follow the guidelines from https://www.overleaf.com/read/sfbcjxcgsnsk/
+
+
+%Copy the following block of text for each problem in the assignment.
+
+\begin{problem}{3.2.15}
+Suppose that $(\vv{1},\vv{2},\dots,\vv{n})$ is a basis of $V$. Prove that \[(\vv{1}+\vv{2},\vv{2}+\vv{3},\dots,\vv{n-1}+\vv{n},\vv{n})\] is also a basis of V.
+\end{problem}
+\begin{sol}
+Let $U = (\vv{1}+\vv{2},\vv{2}+\vv{3},\dots,\vv{n-1}+\vv{n},\vv{n})$, and $\vu{1}=\vv{1}+\vv{2}$ and so forth.
+\[\sum_{i=1}^{n}b_i\vu{i}=b_1\vu{1}+b_2\vu{2}+\dots+b_n\vu{n}=b_1\vv{1}+(b_1+b_2)\vv{2}+\dots+(b_{n-1}+b_n)\vv{n-1}+b_n\vv{n}\]
+\[=b_n\vv{n}+\sum_{i=1}^{n-1}(b_i+b_{i+1})\vv{i}\]
+Thus $a_1=b_1$, $a_2=b_1+b_2$,$\dots$, $a_{n-1}=b_{n-1}+b_n$, $a_n=b_n$.
+We have this written back as the linear combinations of what we know is a basis.
+Following the definition of basis.
+\[\sum_{i=1}^{n}a_i\vv{i} = \zero \implies a_1=a_2=\dots=a_n=0\]
+Then, $b_1=b_1+b_2=b_2+b_3=\dots=b_{n-1}+b_n=b_n=0$. We know $b_1=0$, thus $b_2=0$, and sans an induction proof, we know $b_1=b_2=\dots=b_{n-1}=b_n=0$.\\
+Thus this is also a basis vector.
+\end{sol}
+\begin{problem}{3.2.16}
+Find a sublist of $(x+1, x^2-1, x^2+2x+1, x^2-1)$ that is a basis for $\poly{\R}{2}$
+\end{problem}
+\begin{sol}
+We know that $\poly{\R}{2}$ is isomorphic to $\R^3$. So we can take any $ax^2+bx+c$, and it is equivalent to the vector $\begin{bmatrix}a\\b\\c\end{bmatrix}$. Thus this list is the list of the following vectors, 
+\[\left (\begin{bmatrix}0\\1\\1\end{bmatrix}, \begin{bmatrix}1\\0\\-1\end{bmatrix}, \begin{bmatrix}1\\2\\1\end{bmatrix}, \begin{bmatrix}2\\-1\\0\end{bmatrix}\right )\]
+Thus a sublist that is a basis can be, $\left (\begin{bmatrix}0\\1\\1\end{bmatrix}, \begin{bmatrix}1\\0\\-1\end{bmatrix}, \begin{bmatrix}2\\-1\\0\end{bmatrix}\right )$, because it spans $\R^3$ (pivot in every column), and it is an independent set (pivot in every row).
+\[\begin{bmatrix}
+0 & 1 & 2\\
+1 & 0 & -1\\
+1 & -1 & 0
+\end{bmatrix}\xrightarrow{RREF}\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1 
+\end{bmatrix}
+\]
+\end{sol}
+\begin{problem}{3.2.22}
+Suppose that $(\vv{1},\dots,\vv{n})$ and $(\vu{1},\dots,\vu{n})$ are both bases of V. Show that there is an isomorphism $T\in\mathcal{L}(V)$ such that $T\vv{i}=\vu{i}$ for each $i=1,\dots,n$.
+\end{problem}
+
+\begin{sol}
+Let $G:V\to V$; $G(\ve{i})=\vv{i}$, and $H:V\to V$; $H(\ve{i})=\vu{i}$. We know that we can arrange these as matrix transformations, to show they are linear as $\mathcal{L}(\F^n)\cong M_{n}(\F)$. Let $G=[\vv{1}|\vv{2}|\dots|\vv{n}]$ and $H=[\vu{1}|\vu{2}|\dots|\vu{n}]$. We also know that these matrices will have inverses, because by definition of a basis, these column vectors are independent sets.\\
+Let $T:V\to V$ be the composition of $H$ onto $G^{-1}$, so $T=HG^{-1}$. By our definitions this will take $\vv{i}\to\ve{i}\to\vu{i}$. To show that it is isomorphic, we only need to prove there exists an inverse, $T^{-1}$. We can use the inverse composition rules, and $T^{-1}=GH^{-1}$, as we know $H$ has an inverse, and thus $T\vv{i}=\vu{i}$, and $T^{-1}\vu{i}=\vv{i}$ for all $i=1,\dots,n$.
+\end{sol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}

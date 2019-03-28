@@ -1,0 +1,33 @@
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+        \coordinate (VS)    at (2,0);
+        \coordinate (VT)    at (7,0);
+        \coordinate (VTS)    at (12,0);
+        \draw (VS) circle (2);
+        \draw (VS) circle (0.75);
+        \draw (VT) circle (0.75);
+        \node at (2,0.9) {$\ker T$};
+        \node at (7,0.9) {$\ker S$};
+        \node at (2,2.40) {V};
+        \node at (7,2.40) {V};
+        \node at (12,2.40) {V};
+        \node at (VS) {$\vo{0}$};
+        \node at (VT) {$\vo{0}$};
+        \node at (VTS) {$\vo{0}$};
+        \draw (VT) circle (2);
+        \draw (VT) circle (1.5);
+        \node at (2,2.40) {V};
+        \node at (7,1.6) {$\img T$};
+        \draw (VTS) circle (2);
+        \node at (12,1.6) {$\img S$};
+        \node at (12,0.7) {$\img TS$};
+        \node at (2,2.40) {V};
+        \draw[thick,->] (2,0.5) -- (VT);
+        \draw[thick,->] (2,1.5) -- (7,1.2);
+        \draw (VTS) circle (0.6);
+        \draw (VTS) circle (1.5);
+        \draw[thick, ->] (7,0.5) -- (VTS);
+        \draw[thick, ->] (7, 1.2) -- (12, 0.4);
+        %\node[circle,draw=black, fill=white, inner sep=0pt,minimum size=5pt] (b) at () {};
+    \end{tikzpicture}
+\end{center}
