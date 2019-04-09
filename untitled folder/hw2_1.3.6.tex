@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}   % The [12pt] is optional for senior eyes; the default is 10 pt
+
+\setlength{\parindent}{0pt}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\usepackage{amsmath}  % It's generally a good idea to include this if you're going to use any "unusual" symbols. 
+\usepackage{amssymb}  % More out of the way math symbols such as \nmid for does not divide
+\usepackage{amsfonts}  % I am using this to get the "Blackboard Bold" symbols. 
+
+\usepackage{enumerate}  % The standard enumerate environment numbers the items consecutively. This package enables me to use letters instead. It's optional.
+\usepackage{amsthm}
+
+\usepackage{mdwlist}
+\usepackage[margin=1.2in]{geometry}
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\from}{\!\!:} % squeeze the colon closer to the name of the domain of a function
+\newcommand{\iso}{\cong} % isomorphism
+\newcommand{\rmth}{^{\text{th} } } % roman th as superscript
+\newcommand{\inv}{^{-1}} % inverse (exponent -1)
+\newcommand{\units}{^{\times}} % groups of units as in E^x
+
+% operator names (set in Roman to contrast with math letters 
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sym}{\operatorname{Symm}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+% lower case boldface letters
+\newcommand{\uu}{\mathbf u}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\ww}{\mathbf w}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+
+
+\newtheorem{theorem}{Problem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\th}{^{\text{th} } } % roman th as superscript
+\newcommand{\st}{^{\text{st} } } % roman st as superscript
+\newcommand{\nd}{^{\text{nd} } } % roman nd as superscript
+
+
+
+\title{MATH544 \\ Dr. Miller \\ HW 2}
+\author{Justin Baum}
+
+\begin{document}
+
+\maketitle
+\begin{theorem}[1.3.6]
+Let $\Vec{v_1}$, $\Vec{v_2}$, $\Vec{v_3} \in \R^3$, and suppose that the linear system
+\[x\Vec{v_1}+y\Vec{v_2}+z\Vec{v_3}=\Vec{0}\]
+has infinitely many solutions. show that $\Vec{v_1}$, $\Vec{v_2}$, $\Vec{v_3} \in \R^3$ lie in a  plane containing the origin in $\R^3$.
+\end{theorem}
+\begin{proof}
+\[\Vec{v_1}=\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix};\ \ 
+\Vec{v_2}=\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix};\ \ \Vec{v_3}=\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix} \]
+Then
+\[x\cdot x_1+y\cdot x_2+z\cdot x_3=0\]
+\[x\cdot y_1+y\cdot y_2+z\cdot y_3=0\]
+\[x\cdot z_1+y\cdot z_2+z\cdot z_3=0\]
+The trivial solution is $x=y=z=0$, but that only gives us one solution. However we can show that one vector is some linear combination of the other 2.
+
+\[x\cdot x_1+y\cdot x_2= -z\cdot x_3\]
+\[x\cdot y_1+y\cdot y_2= -z\cdot y_3\]
+\[x\cdot z_1+y\cdot z_2= -z \cdot z_3\]
+If $x\neq 0\land y \neq 0 \land z\neq 0$, then this can be represented in vector form again.
+\[x\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}+
+y\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}=
+-z\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix}\]
+Thus one of the vectors is collinear to the addition of the other two. And so $<\Vec{v_1},\Vec{v_2},\Vec{v_3}>=<\Vec{v_1},\Vec{v_2}>$. Because $<\Vec{v_1},\Vec{v_2}>$ includes the $\Vec{0}$(from the given), and all three vectors, because it is the span of 2 and the third is a linear combination of the other two, covered by the definition of span. If this forms a plane, then it will include all 4 vectors. If they both are collinear it will form a line, and thus there are an infinite number of planes that will contain all 4 points. And if it forms a point, then that point must be \Vec{0}, and again there are an infinite number of planes from that point\\\\
+If $x=0$,
+\[0\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}+
+y\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}=
+-z\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix}\implies y\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}=
+-z\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix}\]
+Thus we get two collinear vectors, and the same argument, this can be extended to $y=0$ and $z=0$.\\
+Suppose we can have 2 solutions that are 0. Then we get 
+\[0\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}+
+0\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}=
+-z\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix}\]
+Thus \[\begin{bmatrix}0\\0\\0\end{bmatrix}=
+-z\begin{bmatrix}x_3\\y_3\\z_3\end{bmatrix}\]
+And so we have the null vector as one of the vectors in the linear combination, and we can just draw a plane through the 3 points(or line if they are collinear, and a point if they are all the null vector.\\
+If 3 solutions are 0, this is trivially true.
+\end{proof}
+
+\end{document}

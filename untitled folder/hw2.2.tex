@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}   % The [12pt] is optional for senior eyes; the default is 10 pt
+
+\setlength{\parindent}{0pt}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\usepackage{amsmath}  % It's generally a good idea to include this if you're going to use any "unusual" symbols. 
+\usepackage{amssymb}  % More out of the way math symbols such as \nmid for does not divide
+\usepackage{amsfonts}  % I am using this to get the "Blackboard Bold" symbols. 
+
+\usepackage{enumerate}  % The standard enumerate environment numbers the items consecutively. This package enables me to use letters instead. It's optional.
+\usepackage{amsthm}
+
+\usepackage{mdwlist}
+\usepackage[margin=1.2in]{geometry}
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\from}{\!\!:} % squeeze the colon closer to the name of the domain of a function
+\newcommand{\iso}{\cong} % isomorphism
+\newcommand{\rmth}{^{\text{th} } } % roman th as superscript
+\newcommand{\inv}{^{-1}} % inverse (exponent -1)
+\newcommand{\units}{^{\times}} % groups of units as in E^x
+
+% operator names (set in Roman to contrast with math letters 
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sym}{\operatorname{Symm}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+% lower case boldface letters
+\newcommand{\uu}{\mathbf u}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\ww}{\mathbf w}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+
+
+\newtheorem{theorem}{Problem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\th}{^{\text{th} } } % roman th as superscript
+\newcommand{\st}{^{\text{st} } } % roman st as superscript
+\newcommand{\nd}{^{\text{nd} } } % roman nd as superscript
+
+
+
+\title{MATH544 \\ Dr. Miller \\ HW 2}
+\author{Justin Baum}
+
+\begin{document}
+
+\maketitle
+\begin{theorem}[1.4.10]
+A linear system over a field $\F$ is called upper triangular if the coefficient $a_{ij} = 0$ whenever $i > j$.\\
+Show that if $a_{ii} \neq 0$ then the system is consistent with a unique solution.
+\end{theorem}
+\begin{proof}
+Base Case: $n=1$.\\
+\[a_{11}x_1=b1\]
+Trivially we can calculate
+\[x_1=\frac{b_1}{a_{11}}\]
+Inductive Hypothesis:
+Given an (n+1) x (n+1) upper triangular system, and $a_{ii} \neq 0$.\\
+If we remove the bottom n rows, and make that into an n x n system with $x_1,...,x_n$, then $E_{n+1}$ will be the (n+1)\textsuperscript{th} linear equation with (n+1) terms.
+
+\[a_{11}x_1+...+a_{1n}x_n=b_1\]
+\[\vdots\]
+\[a_{nn}x_n = b_n\]
+Let $j = n+1$
+\[a_{j1}x_1+...+a_{jn}x_{n}+a_{jj}x_{j}=b_{j}\] Due to the base case, the n x n system has a single unique solution, $x_1,\dots,x_n$. Because so,
+\[x_{j}=\frac{1}{a_{jj}}\left ( - (a_{j1}x_1+...+a_{jn}x_n) + b_{j}\right )\]
+Thus an (n+1) x (n+1) linear system has a unique solution as well.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,362 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[11 pt]{article}
+\usepackage[margin=1in, top=1.25in, bottom=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\pagestyle{fancy}
+\setlength{\headheight}{25pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\fancyhf{}
+\lhead{Justin Baum}  %replace with your name
+\rhead{Math 544 \\ Spring 2019 \\ Homework 6} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+\lfoot{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Solutions to problems go below.  Please follow the guidelines from https://www.overleaf.com/read/sfbcjxcgsnsk/
+
+
+%Copy the following block of text for each problem in the assignment.
+
+
+\begin{problem}{2.5.9d}
+Show that for any $a,b\in\R$ there is a unique solution of the differential equation(2.22) which satisfies $f(0)=a$ and $f(\frac{\pi}{2})=b$.
+\[ \! \! \! \text{2.22: }\ \ \ \ \frac{d^2f}{dt^2}+f(t)=4e^{-t} \]
+
+\end{problem}
+
+\begin{problem}{2.5.14} 
+Show that $T\in L(V)$ is injective if and only if 0 is not an eigenvalue of T.
+\end{problem}
+\begin{sol}
+Let's assume the contrapositive of the right hand direction. If 0 is an eigenvalue, then there exists a $\vec{v}\ne \vec{0}$ such that $T(\vec{v})=0\vec{v}$. Thus this fails to be injective as $T(\vec{0})=T(\vec{v})=\vec{0}$ but $\vec{v}\ne \vec{0}$.\\
+Let's assume the contrapositive of the left hand direction. If $T$ is not injective then there exists distinct $\vec{v_1},\vec{v_2}$, such that $T(\vec{v_1})=T(\vec{v_2})$. Thus $T(\vec{v_1}-\vec{v2})=T(\vec{v_1})-T(\vec{v_2})=\vec{0}$, however $(\vec{v_1}-\vec{v_2})\ne \vec{0}$, and thus $(\vec{v_1}-\vec{v_2}$ have an eigenvalue of $0$, because $T(\vec{v_1}-\vec{v_2})=0(\vec{v_1}-\vec{v_2})$ .
+\end{sol}
+\begin{bmatrix}
+
+\end{bmatrix}
+
+\begin{problem}{3.1.2a}
+Determine whether this list of vectors is linearly independent in $\C$.\\
+\[\left (\begin{bmatrix}
+i\\1+i
+\end{bmatrix},\begin{bmatrix}
+1-i\\2
+\end{bmatrix}\right )\]
+\end{problem}
+\begin{sol}
+We can put this into matrix form $A=[\vec{v2}|\vec{v1}]$, and convert this to RREF, and use a previous theorem depending on the leading pivots to find linear independence or dependence.
+\[A=\begin{bmatrix}
+i & 1-i \\ 1+i & 2
+\end{bmatrix}\xrightarrow[-1\cdot R_1]{-R_2+R_1}\begin{bmatrix}
+1 & 1+i\\1+i&2
+\end{bmatrix}\xrightarrow{(-1-i)R_1+R_2}\begin{bmatrix}
+1 & 1+i\\
+0 & 2-2i
+\end{bmatrix}\]
+\[\xrightarrow{-\frac{1}{2}R_2+R_1}\begin{bmatrix}
+1 & 2\\0 & 2-2i
+\end{bmatrix}\xrightarrow[\frac{1}{8}R_2]{(2+2i)R_2}\begin{bmatrix}
+1 & 2 \\ 0 & 1
+\end{bmatrix}\xrightarrow{-2R_2+R_1}\begin{bmatrix}
+1 & 0 \\ 0 & 1
+\end{bmatrix}\]
+This matrix can be reduced to the identity, and thus it is linearly independent.
+\end{sol}
+
+\begin{problem}{3.1.2b}
+Determine whether this list of vectors is linearly independent. \\
+\[\left (\begin{bmatrix}
+-1 \\ 2 \\ 0
+\end{bmatrix},\begin{bmatrix}
+2\\-3\\1
+\end{bmatrix},
+\begin{bmatrix}
+0\\4\\-5
+\end{bmatrix},
+\begin{bmatrix}
+1 \\ -2 \\ -1
+\end{bmatrix}
+\right )\]
+\end{problem}
+
+\begin{sol}
+We can use our method of turning this into a 4 by 3 matrix with every column vector acting as a column in the matrix. Then by corollary from class(February 20), we know that this list is dependent.
+\begin{corollary}[February 20]
+Suppose that $S=\{\vec{v_1},\vec{v_2},\vec{v_3},\dots,\vec{v_n}\} \subset \F^m$.\\
+\begin{enumerate}
+    \item If $n > m$, then S is dependent.
+    \item If $m > n$, then S fails to span $\F^n$.
+\end{enumerate}
+\end{corollary}
+\end{sol}
+
+
+\begin{problem}{3.1.2c}
+Determine whether this list of vectors is linearly independent. \\
+\[\left (\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix},\begin{bmatrix}
+2\\1\\3
+\end{bmatrix},
+\begin{bmatrix}
+1\\0\\1
+\end{bmatrix}
+\right )\]
+\end{problem}
+
+\begin{sol}
+Using the same method as (3.1.2a)
+\[A=\begin{bmatrix}
+1 & 2 & 1\\
+1 & 1 & 0\\
+2 & 3 & 1
+\end{bmatrix}\xrightarrow{}\begin{bmatrix}
+1 & 0 & -1\\
+0 & 1 & 1\\
+0 & 0 & 0
+\end{bmatrix}\]
+This matrix has only two pivots. So one of the vectors is a linear combination of the two others.
+\end{sol}
+
+\begin{problem}{3.1.2d}
+Determine whether this list of vectors is linearly independent. \\
+\[\left (\begin{bmatrix}
+1 \\ 0 \\ 1 \\ 0
+\end{bmatrix},
+\begin{bmatrix}
+0 \\ 1 \\ 0 \\ 1
+\end{bmatrix},
+\begin{bmatrix}
+1\\0\\0\\1
+\end{bmatrix},
+\begin{bmatrix}
+1 \\ 1 \\ 0 \\ 1
+\end{bmatrix}
+\right )\]
+\end{problem}
+
+\begin{sol}
+\[A=\begin{bmatrix}
+1 & 0 & 1 & 1\\
+0 & 1 & 0 & 1\\
+1 & 0 & 0 & 0\\
+0 & 1 & 1 & 1
+\end{bmatrix}\xrightarrow{}\begin{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{bmatrix}\]
+These 4 vectors are linearly independent.
+\end{sol}
+
+\begin{problem}{3.1.8}
+Show that the list of vectors $\left(\begin{bmatrix}
+1\\ i
+\end{bmatrix}, \begin{bmatrix}
+i \\ -1
+\end{bmatrix}\right )$ in $\C^2$ is linearly independent over $\R$, but is linearly dependent over $\C$.
+\end{problem}
+\begin{sol}
+Over $\R$, these vectors are $\left ( \begin{bmatrix}
+1 \\ 0
+\end{bmatrix},
+\begin{bmatrix}
+0\\-1
+\end{bmatrix}\right )
+$, which is trivially independent because if we scale the second vector by $-1$, then we get the normal standard vectors $\left ( 
+\begin{bmatrix}
+1\\0
+\end{bmatrix},
+\begin{bmatrix}
+0\\1
+\end{bmatrix}
+\right )$.\\
+\hline
+Over $\C$, we will use the technique used previously. Let $A=[\vec{v_1}|\vec{v_2}]$.
+\[A=\begin{bmatrix}
+1 & i\\
+i & -1
+\end{bmatrix}\xrightarrow{-iR_1+R_2}\begin{bmatrix}
+1 & i\\
+0 & 0
+\end{bmatrix}\]
+Thus we have linear dependence, by the theorem in class dealing with pivots and linear dependence.
+We also know that
+\[\begin{bmatrix}
+1\\i
+\end{bmatrix}=-i\begin{bmatrix}
+i\\-1
+\end{bmatrix}\]
+\end{sol}
+
+\begin{problem}{3.1.10a}
+Let $A\in M_n(\F)$. Show that $ker\ A = \{\vec{0}\}$ iff $C(A)=\F^n$.
+\end{problem}
+\begin{sol}
+%Let $\vec{A_1},\dots,\vec{A_n}\in\F^n$ be the columns of $A$.
+If $ker\ A=\{\vec{0}\}$ then the columns of the matrix $A$ are linearly independent(proposition 3.1). Then by corollary 3.2, because the columns of $A$ are linearly independent, then $A$ is injective from $\F^n\to\F^n$, meaning there exists a solution, $\vec{x}$ for $A\vec{x}=\vec{y}$ for all $\vec{y}\in \F^n$. If we break down matrix multiplication, we get a linear combination of $A$'s column vectors.
+\[A\vec{x}=\begin{bmatrix}
+a_{11} & \dots & a_{1n}\\
+\vdots & \ddots & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{bmatrix}\begin{bmatrix}
+x_1\\ \vdots\\ x_n
+\end{bmatrix}=x_1\begin{bmatrix}
+a_{11}\\\vdots\\a_{n1}
+\end{bmatrix}+\dots+x_n\begin{bmatrix}
+a_{n1}\\\vdots\\a_{nn}
+\end{bmatrix}=\vec{y}\]
+Thus if $ker\ A = \{\vec{0}\}$, then $C(A)=\F^{n}$.\\
+If $C(A)=\F^n$, then by the proposition from class, the set of column vectors of $A$ are linearly independent. By proposition 3.1, then $ker\ A = \{\vec{0}\}$.
+\end{sol}
+\begin{proposition}(February 20)
+If $A\in M_n(\F)$, then
+the set of column vectors of A is independent if and only if $A\vec{x}=\vec{0}$ has only the trivial solution if and only if $ker\ A=\{\vec{0}\}$.
+\end{proposition}
+
+\begin{problem}{3.1.10b}
+Let $T\in \mathcal{L}(\F^n)$. Show that $T$ is injective iff T is surjective.
+\end{problem}
+\begin{sol}
+If $T$ is injective, then $T(\vec{v})=T(\vec{w})\implies \vec{v}=\vec{w}$. 
+\end{sol}
+\begin{problem}{3.1.14}
+Let $n\geq 1$ be an integer, and suppose there are constants such that
+\[\sum_{k=1}^{n}a_k\sin kx = 0\]
+for every $x\in\R$. Prove that $a_1=\dots=a_n=0$.
+\end{problem}
+\begin{sol}
+Let $D^2 : C^{\infty}(\R)\to c^{\infty}(\R)$ be the linear transformation $D^2 f = f''$. Then 
+\[D^2(\sin kx) = - k^2\sin kx\]
+for $k=1,\dots, k=n$, thus these are eigenvectors, with eigenvalues from $\lambda_{k=1} = -1,\dots, \lambda_{k=n} = -n^2$ respectively. By theorem 3.8, these are linearly independent. By definition of linear independence,
+\[\sum_{k=1}^{n}a_k\vec{v_k}=\vec{0} \iff a_1=\dots=a_n=0\]
+where $\vec{v_k}=\sin kx$.
+\end{sol}
+\pagebreak
+\begin{definition}{Matrix Exponential}
+\[e^A=I_n+A+\frac{1}{2}A^2+\frac{1}{3!}A^3+\dots+\frac{1}{n!}A^n+\dots\]
+\end{definition}
+\begin{problem}{M.1}
+Why is convergence not an issue for $A=\begin{bmatrix}
+0 & 1\\ 0 & 0
+\end{bmatrix}$? What is $e^A$ in this case?
+\end{problem}
+\begin{sol}
+\[e^A=\begin{bmatrix}
+1 & 0 \\ 0 & 1
+\end{bmatrix}+
+\begin{bmatrix}
+0 & 1\\ 0 & 0
+\end{bmatrix}+\frac{1}{2}\begin{bmatrix}
+0 & 0 \\ 0 & 0
+\end{bmatrix}+\dots\]
+It converges very fast because $A^2=0_{2,2}$, thus $A^n=0_{2,2}$ for $n\geq 2$. Which means we only need to calculate the first two terms and sum with the identity. for $e^A$.
+Thus $e^A=\begin{bmatrix}
+1 & 1\\ 0 & 1
+\end{bmatrix}$.
+\end{sol}
+\begin{problem}{M.2}
+Why is convergence not an issue for $A=\begin{bmatrix}
+0 & 1& 0\\ 0 & 0 & 1\\ 0 & 0 & 0
+\end{bmatrix}$? What is $e^A$ in this case?
+\end{problem}
+\begin{sol}
+\[e^A = \begin{bmatrix}
+1 & 0 & 0\\0 & 1 & 0\\ 0 & 0 & 1
+\end{bmatrix}+\begin{bmatrix}
+0 & 1& 0\\ 0 & 0 & 1\\ 0 & 0 & 0
+\end{bmatrix}+\frac{1}{2}\begin{bmatrix}
+0 & 0 & 1 \\ 0 & 0 & 0\\ 0 & 0 & 0
+\end{bmatrix}+\frac{1}{6}\begin{bmatrix}
+0 & 0 & 0 \\ 0 & 0 & 0\\ 0 & 0  &0
+\end{bmatrix}+\dots\]
+Thus this too converges fast because $A^2=0_{3,3}$, and $A^n=0_{3,3}$ for $n\geq 2$. Thus it adds infinite 0 matrices and we only need to calculate the sum of the first 2 terms and the identity.\\
+Thus $e^A=\begin{bmatrix}
+1 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{bmatrix}$.
+\end{sol}
+\begin{problem}{M.5}
+Why is convergence not an issue if $A=\begin{bmatrix}
+\lambda_1 & 0 & 0\\
+0 & \lambda_2 & 0\\
+0 & 0 & \lambda_3
+\end{bmatrix}$. What is $e^A$ in this case?
+\end{problem}
+\begin{sol}
+\[e^A = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+\lambda_1 & 0 & 0\\
+0 & \lambda_2 & 0\\
+0 & 0 & \lambda_3
+\end{bmatrix}
++
+\frac{1}{2}
+\begin{bmatrix}
+\lambda_1^2 & 0 & 0\\
+0 & \lambda_2^2 & 0\\
+0 & 0 & \lambda_3^2
+\end{bmatrix}+\dots+\frac{1}{n!}\begin{bmatrix}
+\lambda_1^n & 0 & 0\\
+0 & \lambda_2^n & 0\\
+0 & 0 & \lambda_3^n
+\end{bmatrix}+\dots\]
+Thus each diagonal, \[A_{ii}=\sum_{k=0}^{\infty}\frac{1}{k!}\lambda_i^k\text{ and  }A_{ij}=0\text{ when }i\ne j\text{. $A_{ii}$ converges for all }\lambda\in\R.\]
+To prove this we can use the Ratio Test, $x_n=\frac{1}{n!}\lambda_i^n$. We cannot generalize this, we can use Taylor's Remainder Theorem to get an arbitrary precision estimate.
+\[\lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\lim_{n\to\infty}\frac{\lambda_i^{n+1}}{(n+1)!}\cdot \frac{n!}{\lambda_i^n}=\lim_{n\to\infty}\frac{\lambda_i}{n+1}=0\]
+\end{sol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}

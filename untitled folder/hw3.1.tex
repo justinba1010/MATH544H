@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}   % The [12pt] is optional for senior eyes; the default is 10 pt
+
+\setlength{\parindent}{0pt}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\usepackage{amsmath}  % It's generally a good idea to include this if you're going to use any "unusual" symbols. 
+\usepackage{amssymb}  % More out of the way math symbols such as \nmid for does not divide
+\usepackage{amsfonts}  % I am using this to get the "Blackboard Bold" symbols. 
+
+\usepackage{enumerate}  % The standard enumerate environment numbers the items consecutively. This package enables me to use letters instead. It's optional.
+\usepackage{enumitem}
+
+\usepackage{amsthm}
+
+\usepackage{mdwlist}
+\usepackage[margin=1.2in]{geometry}
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\from}{\!\!:} % squeeze the colon closer to the name of the domain of a function
+\newcommand{\iso}{\cong} % isomorphism
+\newcommand{\rmth}{^{\text{th} } } % roman th as superscript
+\newcommand{\inv}{^{-1}} % inverse (exponent -1)
+\newcommand{\units}{^{\times}} % groups of units as in E^x
+\newcommand{\vu}{u}
+
+% operator names (set in Roman to contrast with math letters 
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sym}{\operatorname{Symm}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+% lower case boldface letters
+\newcommand{\uu}{\mathbf u}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\ww}{\mathbf w}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+
+
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\th}{^{\text{th} } } % roman th as superscript
+\newcommand{\st}{^{\text{st} } } % roman st as superscript
+\newcommand{\nd}{^{\text{nd} } } % roman nd as superscript
+
+
+
+\title{MATH544 \\ Dr. Miller \\ HW 3}
+\author{Justin Baum}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}[1.4.2]
+Let $\F = \{a+bi|\ a,b\in\Q\}$, show that $\F$ is a field.
+\end{problem}
+\begin{proof}
+In order for $\F$ to be a field it would need to follow that,\\
+Note it is redundant that $a,b\in\Z \rightarrow$ ($a+b\in\Z$ and $a\cdot b\in\Z$), and $\frac{a}{b}\in\Q$ if $a,b\in\Z$, so it will be omitted from the rest of the proof.
+\begin{enumerate}
+    \item $\F$ is closed and commutative under addition.\\
+    Let $u, v \in \F$ then ($a,b,c,d,e,f,g,h\in\Z$)
+    \[u+v=\frac{a}{b}+\frac{c}{d}i+\frac{e}{f}+\frac{g}{h}i=\frac{af+be}{bf}+\frac{ch+fg}{dh}i=v+u\]
+    \item $\F$ is associative under addition.\\
+    Let $u, v,w \in \F$ then ($a,b,c,d,e,f,g,h,j,k,l,m\in\Z$)
+    \[(u+v)+v=(\frac{a}{b}+\frac{c}{d}i+\frac{e}{f}+\frac{g}{h}i)+\frac{j}{k}+\frac{l}{m}i\]
+    \[=(\frac{afk+bek+bfj}{bfk}+\frac{chm+fgm+dhl}{dhm}i)=u+(v+w)\]
+    \item $\F$ is closed and commutative under multiplication.\\
+    Let $u, v \in \F$ then ($a,b,c,d,e,f,g,h\in\Z$)
+    \[u+v=(\frac{a}{b}+\frac{c}{d}i)\cdot(\frac{e}{f}+\frac{g}{h}i)=\frac{ae}{bf}-\frac{cg}{dh}+(\frac{ce}{df}+\frac{ag}{bh})i\]
+    \[=\frac{adeh-bcgf}{bdfh}+\frac{bceh+adgf}{bdfh}i=v+u\]
+    \item $\F$ is associative under multiplication.\\
+    Let $u, v,v \in \F$ then ($a,b,c,d,e,f,g,h,j,k,l,m\in\Z$)
+    \[(u\cdot v)\cdot w=((\frac{a}{b}+\frac{c}{d}i)\cdot(\frac{e}{f}+\frac{g}{h}i))\cdot(\frac{j}{k}+\frac{l}{m}i)\]
+    \[(\frac{adeh-bcfg}{bdfh}+\frac{bceh+adgf}{bhdf}i)\cdot(\frac{j}{k}+\frac{l}{m}i)\]
+    \[=\frac{mjadeh-mjbcfg-lbcehk-ladgf}{bhdfmk}+\frac{mjbceh+mjadgf+kladeh-klbcfg}{bhdfkm}i\]\[=u\cdot(v\cdot w)\]
+    \item $ 0$ is an additive identity.\\
+    Let $u\in \F$.
+    \[u+ 0=(\frac{a}{b}+\frac{c}{d}i)+(0+0i)=\frac{a}{b}+\frac{c}{d}i=u\]
+    \[ 0=0+0i\]
+    \item Every element has an additive inverse. $\frac{a}{b}\in\Q\rightarrow -1\frac{a}{b}\in\Q$.\\
+    Let $u\in\F$, $a,b,c,d\in\Z$.
+    \[\vu + (-\vu) = (\frac{a}{b}+\frac{c}{d}i)+(-\frac{a}{b}-\frac{c}{d}i)=0+0i= 0\]
+    \item $1$ is a multiplicative identity. Trivial. $ 1=1+0i$
+    \item Every nonzero element has a multiplicative inverse.\\
+    Let $\vu \in \F$, $a,b,c,d\in\Z$.
+    \[\vu\cdot\vu^{-1} = 1\]
+    \[(\frac{a}{b}+\frac{c}{d}i)\vu^{-1}=1\]
+    \[\vu^{-1}=\frac{1}{(\frac{a}{b}+\frac{c}{d}i)}\]
+    \[\frac{1}{(\frac{a}{b}+\frac{c}{d}i)}=\frac{1}{(\frac{a}{b}+\frac{c}{d}i)}\cdot\frac{\frac{a}{b}-\frac{c}{d}i}{\frac{a}{b}-\frac{c}{d}i}=\frac{\frac{a}{b}-\frac{c}{d}i}{\frac{a^2}{b^2}+\frac{c^2}{d^2}}=\frac{\frac{a}{b}-\frac{c}{d}i}{\frac{d^2a^2+b^2c^2}{d^2b^2}}=\frac{ad^2b+cdb^2i}{d^2a^2+b^2c^2}\]
+    \[\vu^{-1}=\frac{ad^2b+cdb^2i}{d^2a^2+b^2c^2}\]
+\end{enumerate}
+\end{proof}
+\begin{problem}[1.4.3d]
+Explain why $\F=\{\frac{m}{2^n}|\ m,n\in\Z\}$ is not a field. 
+\end{problem}
+\begin{proof}
+Fails multiplicative inverse, $\vu=\frac{3}{2}\in \F$, $\vu^{-1}=\frac{2}{3}\in\Q$ but $log_2(3)\not\in \Z\rightarrow \vu^{-1}\not\in\F$.
+\end{proof}
+\begin{problem}[1.5.2]
+Show that the set of solutions of a nonhomogeneous m x n linear system is never a subspace of $\F^n$.
+\end{problem}
+\begin{proof}
+\[a_{11}x_1+\dots+a_{1n}x_n=b_1\]
+\[\vdots\ \ \ \ \ \ddots\ \ \ \ \ \ \vdots\ \ \ \ \ \ \ \ \vdots\]
+\[a_{m1}x_1+\dots+a_{mn}x_n=b_m\]
+For this set of equations at least one of the equations has a $b\neq 0$, we'll call this row, row j, where $b_j \neq 0$.
+\[a_{j1}x_1+\dots + a_{jn}= b_j\ |\ b_j \neq 0\]
+Thus this set of solutions fails closure over additions. Say $x_1=c_!,\dots x_n=c_n$ and $x_1=d_1,\dots,x_n=d_n$ are solutions. $x_1=c_1+d_1,\dots,c_n+d_n$ is not a solution because $b_j\neq 0$ for the equation j, we have the following contradiction.
+\[a_{j1}(c_1+d_1)+\dots+a_{jn}(c_1+d_1)=(a_{j1}c_1+\dots+a_{jn}c_n)+(a_{j1}d_1+\dots+a_{jn}d_n)\]
+\[=b_j+b_j=2\cdot b_j\neq b_j\]
+Because $b_j\neq 0$, then $2b_j\neq b_j$. Ad absurdum.
+\end{proof}
+\begin{problem}[1.5.4]
+Determine which of the following are subspaces of $C[a,b]$. Here $a,b,c\in\R$ are fixed and $a<c<b$.
+\begin{enumerate}[label=(\alph*)]
+    \item $V=\{f\in C[a,b]\ |\ f(c)=0\}$
+    \item $V=\{f\in C[a,b]\ |\ f(c)=1\}$
+    \item $V=\{f\in D[a,b]\ |\ f'(c)=0\}$
+    \item $V=\{f\in D[a,b]\ |\ f' \text{ is constant}\}$
+\end{enumerate}
+\end{problem}
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \begin{proof}\ \\
+    Suppose we did have a 1 element, when $1\cdot f$, where $f\in V$ would be the same $f$, this would mean for all input values, $1\cdot f$ would map to the same values of $f$. This would mean for all $x\in \R$, $1(x)=1$, which means there would be no where $1(c)=0$. Thus $V$ is not a field, because it fails to have a 1 element, ad absurdum.\\
+    Side note, what if we had a function $1(x)=\left \{\begin{array}{c|c}
+         1& x\neq c  \\
+         0 & x=c
+    \end{array}\right \}$
+    I think this can be the one identity.
+    \end{proof}
+    \item
+    \begin{proof}\ \\
+    The function $f(x)=1$ would be contained in $V$. However, $(f+f)(x)$ would not, because $(f+f)(x)=f(x)+f(x)=2$ for all $x$.\\
+    Thus $V$ is not a field, because it fails closure over addition.
+    \end{proof}
+    \item
+    I don't believe this is a field, still thinking about it.
+    \item
+    \begin{proof}\ \\
+    It is assumed, these are derived, or integrated with respect to $x$, however this is just a placeholder, it can be any singular variable differentiation.\\
+    We have closure over addition. Let $f,g\in \F$, and because $f'$ and $g'$ are constants, then we know that $f'(x)=c$ for all x, and $g'(x)=d$ for all x. Thus $f=\int f'\ dx=\int c\ dx= cx+C_1$, and $g=\int g'\ dx=\int d\ dx= dx+C_2$. And $(f+g)(x)=cx+dx+C_1+C_2=(c+d)(x)+C$. Thus $\frac{d}{dx}(c+d)=(c+d)$ for all x. And thus closure is maintained.\\
+    However, closure over multiplication does not exist. Suppose it did. $f=\int f'\ dx$ and $g=\int g'\ dx$. By the same argument as before, $f=cx+C_1$ and $g=dx+C_2$, thus $(f\cdot g)=cdx^2+cC_2x+dC_1x+C_1C_2$, which means $(f+g)'=2cdx+dC_1+cC_2$, and it is not constant(when $c\neq 0$ and $d\neq 0$). Thus $V$ is not a field because it fails closure over multiplication.
+    \end{proof}
+\end{enumerate}
+\begin{problem}
+Let $V$ be a vector space, and suppose that $U$ and $W$ are both subspaces of $V$. Show that
+\[U\cap W := \{v\ |\ v\in U \land v\in W\}\] is also a subspace.
+\end{problem}
+\begin{proof}\
+\begin{enumerate}[label=(\alph*)]
+\item If $U$ and $W$ are subspaces of $V$, then they both contain $\vec{0}$, and so $\vec{0}\in U \cap W$.
+\item By the same reasoning, $\vec{1}$ is contained in $U\cap W$. This is because $\vec{1}\in V$
+\item Say $\vec{u}\in U\cap W$, then $\vec{u}\in U$ and $\vec{u}\in W$, then because of closure over scalar multiplication for $U$ and $W$, we know for $c\in \F$, $c\vec{u}\in U$ and $c\vec{u}\in W$, so we have closure over scalar multiplication for $U\cap W$, because $c\vec{u}\in U\cap W$.
+\item Say $\vec{u},\vec{v}\in U \cap W$, then $\vec{u},\vec{v}\in U$ and $\vec{u},\vec{v}\in W$, and because $U$ and $W$ are vector spaces, we know they have closure over vector addition. So $\vec{u}+\vec{v}\in U$ and $\vec{u}+\vec{v}\in W$, so $\vec{u}+\vec{v}\in U\cap W$, thus we have closure over vector addition for $U\cap W$.
+\end{enumerate}
+Thus $U\cap W$ is a subspace of $V$, because $U\subseteq V$ and $W \subseteq V$, thus $U\cap W \subseteq V$ and $U\cap W$ is a vector space.
+\end{proof}
+\begin{problem}
+Problem 1.5.9 is not so terribly important in its own right, but becomes much
+more important in the case that A is actually a vector space over the field $\F$. We
+have to refine the definition just a bit, however. If $V$ is a vector space over a field $\F$,
+we call $V^*$ = $\{T: V \to \F\ |\ T \text{ is linear}\}$ the dual space of $V$. Addition and scalar
+multiplication of elements of $V^*$ is just like in 1.5.9, but one also has to check
+that sums and scalar multiples of linear functions are in fact still linear. Worth
+doing, but does not to be written up nicely – you may assume that $V^*$ is a vector space. Can you give some geometrically interesting examples of elements of $(\R^2)*$?
+Since $V*$ is a vector space, its dual $V^{**}$ = $(V^*)^*$ is also a vector space. To get some idea what sort of critters inhabit it, let’s fix a vector $\vec{v} \in V$ and define a function $ev_v := V^* \to \F$ by $ev_v(T) = T(v)$. Show that $ev_v$ is indeed in $V^{**}$. Then define $\sigma: V \to V^{**}$ by $\sigma(v) = ev_v$. Show that $\sigma$ is a linear transformation.
+\end{problem}
+\end{document}
+

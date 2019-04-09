@@ -1,0 +1,116 @@
+\section{18 January 2019}
+\subsection{Gaussian Elimination}
+\begin{ex}
+Let \[\left \{
+\begin{tabular}{cccc}
+E_1: & x+y-z & =&1\\
+E_2: & 2x-y+7z & =&8 \\
+E_3: & -x+y-5z & = &-5
+\end{tabular}\]
+Solve for $(x,y,z)$. Find the intersection of 3 planes in $\R^3$. We happen to know that $(3,-2,0)$, and $(1,1,1)$ lie in the intersection.\\
+Compute elimination: Let's make $E_2 : -2E_1+E_2$ and $E_3=E_1+E_3$.
+\[\left \{
+\begin{tabular}{cccc}
+E_1: & x+y-z & =&1\\
+E_2: & -3y+9z & =&6 \\
+E_3: & 2y-6z & = &-4
+\end{tabular}\]
+Let's make $E_2 : \frac{-1}{3}E_2$ and $E_3=\frac{1}{2}E_3$.
+\[\left \{
+\begin{tabular}{cccc}
+E_1: & x+y-z & =&1\\
+E_2: & y-3z & =&-2 \\
+E_3: & y-3z & = &-2
+\end{tabular}\]
+Let $E_3 : -E_2+E_3$, this allows us to free $z$.
+\[\left \{
+\begin{tabular}{cccc}
+E_1: & x+y-z & =&1\\
+E_2: & y-3z & =&-2 \\
+E_3: & 0& = & 0
+\end{tabular}\]
+Then to solve it is just set $z=t$, for some $t\in\R$. And $y=-2+3z=-2+3t$, and $x=1+z-y=1+t-(-2t+3t)=3-2t$. So we get the parametric line,
+$\left \{
+\begin{tabular}{ccc}
+x&=&3-2t\\
+y&=&-2+3t\\
+z&=&t
+\end{tabular}$
+\end{ex}
+\hline
+\subsection{Same example using Gaussian Elimination}
+\begin{ex}
+\[
+\begin{tabular}{cccc}
+E_1: & x+y-z & =&1\\
+E_2: & 2x-y+7z & =&8 \\
+E_3: & -x+y-5z & = &-5
+\end{tabular} \implies \begin{amatrix}{3}1 & 1 & -1 & 1\\ 2 & -1 & 7 & 8\\ -1 & 1 & 7 & -5\end{amatrix}\]
+This matrix with the vertical bar is called an \textit{Augmented Matrix} for $E_1, E_2, E_3$. \[A = \begin{bmatrix}1 & 1 & -1\\ 2 & -1 & 7\\ -1 & 1 & 7\end{bmatrix}\ B=\begin{bmatrix}1\\8\\-5\end{bmatrix}\]
+In this example $A$ is called the \textit{Coefficient Matrix} and $B$ is called the \textit{Right Hand Side Matrix}.
+\end{ex}
+\subsection{Gaussian Row Operations}
+There are 3 kinds of row operations that do not affect the solutions.
+\begin{enumerate}
+    \item $R_i \leftrightarrow R_j$ swap row i with row j.
+    \item Replace row j with $cR_i+R_j$, leaving $R_i$ unchanged $(i\neq j)$.
+    \item Replace $R_i$ by $cR_i$, some $c\neq 0$.
+\end{enumerate}
+\setcounter{ex}{1}
+\begin{ex} Continued.
+\[\begin{amatrix}{3}1 & 1 & -1 & 1\\ 2 & -1 & 7 & 8\\ -1 & 1 & 7 & -5\end{amatrix}\xrightarrow[R_1+R_2]{R_1+R_3}\begin{amatrix}{3}1 & 1 & -1 & 1\\ 0 & -3 & 9 & 6\\ 0 & 2 & -6 & -4\end{amatrix}\]
+\[\xrightarrow[2R_3+R_2]{}\begin{amatrix}{3}1 & 1 & -1 & 1\\ 0 & 1 & -3 & -2\\ 0 & 2 & -6 & -4\end{amatrix}\xrightarrow[-2R_2 + R_3]{}\begin{amatrix}{3}1 & 1 & -1 & 1\\ 0 & 1 & -3 & -2\\ 0 & 0 & 0 & 0\end{amatrix}\]
+\end{ex}
+\hline
+\subsection{Row Echelon Form}
+\begin{enumerate}
+    \item Rows with all 0's are on bottom.
+    \item First non-zero entry, reading left to right right is a $1$.
+    \item If $R_i, R_j$ are non-zero rows, $j>i$ then the leading $1$ in $R_j$ is to the right of the leading $1$ in $R_i$.
+\end{enumerate}
+\setcounter{ex}{1}
+\begin{ex}Continued.
+\[\begin{amatrix}{3}1 & 1 & -1 & 1\\ 0 & 1 & -3 & -2\\ 0 & 0 & 0 & 0\end{amatrix}\xrightarrow[R_2+R_1]{}\begin{amatrix}{3}1 & 0 & 2 & 3\\ 0 & 1 & -3 & -2\\ 0 & 0 & 0 & 0\end{amatrix}\]
+\end{ex}
+\hline
+\subsection{Reduced Row Echelon Form}
+Only 0's above the leading 1's.
+\setcounter{ex}{1}
+\begin{ex}Continued\\
+Now undo the matrix, to get solution equations.
+\[\left \{ \begin{tabular}{c}
+x+2z=3\\
+y-3z=-2
+\end{tabular}\]
+\end{ex}
+
+\begin{ex}
+\[\begin{amatrix}{3}
+1 & 0 & 0 & 4\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{amatrix} \implies \begin{tabular}{c}
+     x=4\\y=-1\\z=0\\0=0
+\end{tabular}\] So this means that the solution is a line from $(4,-1,0,t)$ for all $t\in \R$.
+\end{ex}
+\begin{ex}
+\[\begin{amatrix}{4}
+1 & 2 & 0 & 3 & 3\\
+0 & 0 & 1 & -1 & 0\\
+0 & 0 & 0 & 0 & 0
+\end{amatrix} \implies \begin{tabular}{c}
+     x+2y+3w=3\\z-w=0\\z0=0
+\end{tabular}\] So this means that x and z are bound because they are the leading 1's, and other variables are free, and can be assigned to anything in the universal set.
+\end{ex}
+
+\begin{ex}
+\[\begin{amatrix}{3}
+1 & 0 & 2 & 3\\
+0 & 1 & 1 & -4\\
+0 & 0 & 0 & 1
+\end{amatrix} \implies \begin{tabular}{c}
+     x+2z=3\\y+z=-4\\0=1
+\end{tabular}\] So this means we have 0 solutions, because $0=1$ is a contradiction.
+\end{ex}
+\subsection{Note} The variables in columns with leading 1's are the bound variables. The other variables are free variables, and can be set to anything.

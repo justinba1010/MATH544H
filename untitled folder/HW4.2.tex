@@ -1,0 +1,194 @@
+\documentclass[12pt]{article}   % The [12pt] is optional for senior eyes; the default is 10 pt
+
+\setlength{\parindent}{0pt}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\usepackage{amsmath}  % It's generally a good idea to include this if you're going to use any "unusual" symbols. 
+\usepackage{amssymb}  % More out of the way math symbols such as \nmid for does not divide
+\usepackage{amsfonts}  % I am using this to get the "Blackboard Bold" symbols. 
+
+\usepackage{enumerate}  % The standard enumerate environment numbers the items consecutively. This package enables me to use letters instead. It's optional.
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+
+\usepackage{mdwlist}
+\usepackage[margin=1.2in]{geometry}
+
+% The following are definitions for shortcuts for pieces of notation that I use a lot.
+\newcommand{\N}{\mathbb{N}} % the natural numbers
+\newcommand{\Z}{\mathbb{Z}} % the integers
+\newcommand{\C}{\mathbb{C}} % the complex numbers 
+\newcommand{\R}{\mathbb{R}} % the real numbers
+\newcommand{\Q}{\mathbb{Q}} % the rational numbers
+\newcommand{\F}{\mathbb{F}} % the Field
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\lgr}{\lambda}
+\newcommand{\from}{\!\!:} % squeeze the colon closer to the name of the domain of a function
+\newcommand{\iso}{\cong} % isomorphism
+\newcommand{\rmth}{^{\text{th} } } % roman th as superscript
+\newcommand{\inv}{^{-1}} % inverse (exponent -1)
+\newcommand{\units}{^{\times}} % groups of units as in E^x
+
+% operator names (set in Roman to contrast with math letters 
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sym}{\operatorname{Symm}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+% lower case boldface letters
+\newcommand{\uu}{\mathbf u}
+\newcommand{\vv}{\mathbf v}
+\newcommand{\ww}{\mathbf w}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+
+
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\th}{^{\text{th} } } % roman th as superscript
+\newcommand{\st}{^{\text{st} } } % roman st as superscript
+\newcommand{\nd}{^{\text{nd} } } % roman nd as superscript
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+
+\title{MATH544 \\ Dr. Miller \\ HW 4}
+\author{Justin Baum}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}[2.2.2]
+Give an explicit isomorphism between $\R^2$ and the set of solutions of the linear system over($\R$)
+\[\begin{array}{ccc}
+     w-x+3z&=&0  \\
+     w-x+y+5z&=&0 \\
+     2w-2x-y+4z&=&0
+\end{array}\]
+\end{problem}
+\begin{proof}
+The set of solutions(after throwing this into an augmented matrix and using Gaussian row elimination) is, 
+\[\left \{\begin{bmatrix}s-3t\\-2s\\s\\t\end{bmatrix}\ \Bigg |\  s,t\in \R\right \}\] 
+We want a transformation that hits all solutions, and is bijective. Let the transformation = $A$.
+\[A\begin{bmatrix}x\\y \end{bmatrix}=\begin{bmatrix}x-3y\\-2y\\x\\y\end{bmatrix}\]
+The following is an isomorphism from $\R^2$ to the solutions.
+\[\begin{bmatrix}1 &-3 \\ 0 & -2 \\ 1 & 0 \\ 0 & 1\end{bmatrix}\]
+\end{proof}
+\begin{problem}[2.2.6]
+Find the matrix of the orthogonal projection onto the line $y=x$ in $\R^2$.
+\end{problem}
+\begin{proof}
+The orthogonal projection transformation should look like,
+\[T\left (\begin{bmatrix}x\\y\end{bmatrix}\right)=\begin{bmatrix}y\\x\end{bmatrix}\]
+We can solve this as,
+\[\begin{bmatrix}a& b \\ c & d\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}y \\x\end{bmatrix}\]
+When expanded, and solved we get, $\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}$.
+\end{proof}
+\begin{problem}[2.2.8]
+Show that if 0 is an eigenvalue of $T\in L(V)$, then $T$ is not injective and therefore not invertible.
+\end{problem}
+\begin{proof}
+If 0 is an eigenvalue of $T$, then for some $\vec{v}\in V$, and $\vec{v}\ne \vec{0}$(definition of eigenvector), $T(\vec{v})=0\vec{v}$. This is equal to $\vec{0}$. We know that because $T\in\mathcal{L}(V)$, that $T(\vec{0})=\vec{0}$, thus it is not injective. In essence, $\vec{v}\ne \vec{0}$, and $T(\vec{v})=T(\vec{0})$.
+\end{proof}
+\begin{problem}[G]
+Let $V=\F^{\infty}$ be the infinite sequence space. Define the shift left operator on V by, $L(a_0,a_1,a_2,\dots)=(a_1, a_2, a_3,\dots)$ and the shift right operator as $R(a_0,a_1,a_2,\dots)=(0,a_0,a_1,\dots)$.
+\end{problem}
+\begin{problem}[G.ii]
+Is $L$ injective? Surjective? If yes prove it, if no, why not?
+\end{problem}
+\begin{proof}
+$L$ is not injective, because say we have $A:=\begin{bmatrix}1\\2\\2\\ \vdots\\2\end{bmatrix}$ and $B:=\begin{bmatrix}2\\2\\2\\ \vdots\\2\end{bmatrix}$. Both of these vectors are distinct, but $L(A)=L(B)$.\\
+$L$ is surjective, for all $\vec{v}=\begin{bmatrix}a_0\\a_1\\a_2\\\vdots\end{bmatrix}\in \F^{\infty}$, so $T\left(\begin{bmatrix}x\\a_0\\a_1\\\vdots\end{bmatrix}\right ) =\begin{bmatrix}a_0\\a_1\\a_2\\\vdots\end{bmatrix}= \vec{v}$ for all $x\in\F$.
+\end{proof}
+\begin{problem}[G.iii]
+Is $R$ injective? Surjective? If yes prove it, if no, why not?
+\end{problem}
+
+\begin{proof}
+$R$ is injective, suppose $T\left (\begin{bmatrix}a_0\\a_1\\a_2\\\vdots\end{bmatrix} \right )=T\left ( \begin{bmatrix}b_0\\b_1\\b_2\\\vdots\end{bmatrix}\right )$. Then $\begin{bmatrix}0\\a_0\\a_1\\\vdots\end{bmatrix}=\begin{bmatrix}
+0\\b_0\\b_1\\\vdots
+\end{bmatrix}$. And so, $a_0=b_0$, $a_1=b_1$, $a_2=b_2$, $\dots$, $a_n=b_n$, thus $\begin{bmatrix}
+a_0\\a_1\\a_2\\\vdots
+\end{bmatrix}=\begin{bmatrix}
+b_0\\b_1\\b_2\\\vdots
+\end{bmatrix}$\\
+$R$ is not surjective, because $\begin{bmatrix}
+1\\\vdots
+\end{bmatrix}\in V^{\infty}$ but there does not exist $\vec{v}$, such that $T(\vec{v})=\begin{bmatrix}
+1\\\vdots
+\end{bmatrix}$, because all elements in the image have the first row as zero.
+\end{proof}
+\begin{problem}[G.iv]
+Are the compositions, $LR$ and $RL$ the same? If yes prove it; if no, why not?
+\end{problem}
+\begin{proof}
+$LR = L\circ R$, so a transformation of such, \[L\left(R\left(
+\begin{bmatrix}
+a_0\\a_1\\a_2\\\vdots
+\end{bmatrix}
+\right)\right)=L\left(
+\begin{bmatrix}
+0\\a_0\\a_1\\\vdots
+\end{bmatrix}
+\right)=
+\begin{bmatrix}
+a_0\\a_1\\a_2\\\vdots
+\end{bmatrix}
+\]
+And RL = $R\circ L$, so a transformation of such,
+\[R\left(L\left(
+\begin{bmatrix}
+a_0\\a_1\\a_2\\\vdots
+\end{bmatrix}
+\right)\right)=
+R\left(
+\begin{bmatrix}
+a_1\\a_2\\a_3\\\vdots
+\end{bmatrix}
+\right)=\begin{bmatrix}
+0\\a_1\\a_2\\\vdots
+\end{bmatrix}\]
+And so these transformations are not the same.
+\end{proof}
+\begin{problem}[I]
+Let $V = C^{\infty}(R) = \{f: R \to R\ \vert\  \text{f and all of its derivatives exist and are continuous}\}$.
+This is a vector space over R
+\end{problem}
+\begin{problem}[I.i]
+Define $D: V \to V by D(f) = f'$. Convince yourself that D is linear. Which
+functions are in ker(D)?
+\end{problem}
+\begin{proof}
+Let $z(x)=0$. This is $\vec{0}$ in this space.\\
+By definition, $ker(D)=\{f\ |\ f'=z\}$. By the fundamental theorem of calculus, $ker(D)=\{f\ |\ \forall x\in\R; f(x)=0x+C\}$.
+\end{proof}
+\begin{problem}[I.ii]
+Let $g(x)=e^{-3x}$\\
+By definition for an eigenvector, the eigenvectors for which the eigenvalue, $-3$, would solve the equation.
+\[D(f)=f'=-3f\]
+The eigenvector $g$, works in this equation because,
+\[D(g)=g'=-3\cdot e^{-3x}=-3g\]
+There exists a function $f$ for every real number, $\lambda$, such that $\lambda$ is the eigenvalue because by differentiation in calculus, let $f=e^{\lambda x}$ then $\frac{df}{dx}=D(f)=\lambda f$
+\end{problem}
+\begin{problem}[I.iii]
+The composition $D^2 = D\circ D: V \to V$ is given by $D^2(f) = f''$. Show that $-4$ is an
+eigenvalue for $D^2$. Is every negative real number an eigenvalue for $D^2$?
+\end{problem}
+\begin{proof}
+Every negative real number is an eigenvalue, because for all $\lambda \in \R$ and $\lambda < 0$, let $\beta = -\lambda$, we can construct a function, $f$ that $D^2(f)=\lambda f=-\beta f$. Let $f=e^{\sqrt{\beta}i}$, then $D(D(f))=D(\sqrt{\beta}if)=i^2 \beta f=-\beta f=\lambda f$, by differentiation rules of calculus.\\
+We can now find a function that has an eigenvalue of $-4$, let $f=e^{\sqrt{4}i}$, then $D^2(f)=-4f$.
+\end{proof}
+\end{document}
